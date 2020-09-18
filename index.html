@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.0/angular.min.js"
+        integrity="sha512-jiG+LwJB0bmXdn4byKzWH6whPpnLy1pnGA/p3VCXFLk4IJ/Ftfcb22katPTapt35Q6kwrlnRheK6UPOIdJhYTA=="
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.8.0/angular-messages.min.js"
+        integrity="sha512-VDnDg2zzPdNBQf0aO5Hqwnili5SX7JKq9cQFIaD2VvA1l9PhZwN/BrTd0bDDdWh1kfEFzpkPMCfTPu3yE1wIkA=="
+        crossorigin="anonymous"></script>
+
+    <script src="https://code.angularjs.org/1.8.0/angular-resource.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    
+
+    <script src="app.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#!main">Main HTML</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#!second">Second HTML</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+
+        <div class="container" ng-controller="myController">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Hello world</h1>
+                    {{name}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <form name="myForm">
+                        <label>
+                            Enter your name:
+                            <input type="text" name="myName" ng-model="name" ng-minlength="5" ng-maxlength="20"
+                                required />
+                            Name: <input ng-model="name">
+
+                        </label>
+                        <pre>myForm.myName.$error = {{ myForm.myName.$error | json }}</pre>
+
+                        <div ng-messages="myForm.myName.$error" style="color:maroon" role="alert">
+                            <div ng-message="required">You did not enter a field</div>
+                            <div ng-message="minlength">Your field is too short</div>
+                            <div ng-message="maxlength">Your field is too long</div>
+                            <div ng-message-default>This field has an input error</div>
+                        </div>
+
+                        <div class="alert" ng-show="name.length !== len5">
+                            vui long nhap 5 ky tu
+                        </div>
+                    </form>
+                </div>
+
+                <h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus dignissimos facilis quae est
+                    et minima quisquam dolore sapiente soluta quod rem assumenda consequatur reiciendis voluptas
+                    exercitationem, adipisci aperiam. A, sapiente?</h1>
+            </div>
+
+            <div class="row">
+                <div ng-view></div>
+            </div>
+            
+        </div>
+    </header>
+
+
+</body>
+
+</html>
